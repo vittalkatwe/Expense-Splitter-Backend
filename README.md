@@ -33,28 +33,17 @@ This project provides the backend services for an Expense Splitter application. 
 2.  **Set up the database:**
     Open the `src/main/resources/application.properties` file. For a straightforward testing experience, you can use the H2 in-memory database with the existing configuration or add below configuration for different database (Postgres for reference):
     ```properties
-    spring.datasource.url=jdbc:h2:mem:testdb
-    spring.datasource.driverClassName=org.h2.Driver
-    spring.datasource.username=sa
-    spring.datasource.password=password
-    spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
-    spring.h2.console.enabled=true
-    ```
-    Spring Boot provides seamless integration with the H2 database when it detects the H2 dependency in the classpath. The H2 database is an embedded, open-source, and in-memory database written in Java. It's a lightweight and fast SQL database that can run in either in-memory or embedded mode.
+      spring.datasource.url=jdbc:postgresql://localhost:5432/dbname
+      spring.datasource.username=postgres
+      spring.datasource.password=your_password
+      spring.datasource.driver-class-name=org.postgresql.Driver
+      spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+      spring.jpa.hibernate.ddl-auto=update   # or create-drop if you want schema to reset every time
+      spring.jpa.show-sql=true
 
-3.  **Build the code:**
-    In your terminal, execute the following command:
-    ```sh
-    mvn clean install
-    ```
-    This command packages your application into a runnable `.jar` file.
-
-4.  **Run the program:**
-    ```sh
-    java -jar target/expensesplitbackend-0.0.1-SNAPSHOT.jar
     ```
 
-5.  **Use it:**
+3.  **Use it:**
     The application will be running on `http://localhost:8080`. You can interact with the API using a tool like **Postman**. For instance, to view all users, send a GET request to `http://localhost:8080/api/users`. You can also access the H2 database console in your browser at `http://localhost:8080/h2-console` to visually inspect the database or execute SQL queries.
 
 ## How It Works (The Smart Parts)
