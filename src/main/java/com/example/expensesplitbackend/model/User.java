@@ -1,14 +1,14 @@
 package com.example.expensesplitbackend.model;
 
 import jakarta.persistence.*;
+
 import java.util.*;
 
 @Entity
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    private UUID id=UUID.randomUUID();
     private double receivableAmount;
     private double amountToPay;
     private String username;

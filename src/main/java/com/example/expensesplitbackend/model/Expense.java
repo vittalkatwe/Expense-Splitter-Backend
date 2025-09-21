@@ -9,7 +9,7 @@ public class Expense {
     public enum SplitType { EQUAL, EXACT, PERCENTAGE }
 
     @Id
-    private UUID id;
+    private UUID id=UUID.randomUUID();
     private String title;
     private double amount;
 
@@ -24,7 +24,6 @@ public class Expense {
     public Expense() {}
 
     public Expense(String title, double amount, SplitType splitType, UUID paidBy, Map<UUID, Double> splitData) {
-        this.id = UUID.randomUUID();
         this.title = title;
         this.amount = amount;
         this.splitType = splitType;

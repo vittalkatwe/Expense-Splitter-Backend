@@ -2,12 +2,13 @@ package com.example.expensesplitbackend.model;
 
 
 import jakarta.persistence.*;
+
 import java.util.*;
 
 @Entity
 public class Settlement {
     @Id
-    private UUID id;
+    private UUID id=UUID.randomUUID();
     private UUID fromUser;
     private UUID toUser;
     private double amount;
@@ -15,7 +16,6 @@ public class Settlement {
     public Settlement() {}
 
     public Settlement(UUID fromUser, UUID toUser, double amount) {
-        this.id = UUID.randomUUID();
         this.fromUser = fromUser;
         this.toUser = toUser;
         this.amount = amount;
